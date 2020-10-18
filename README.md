@@ -48,11 +48,13 @@ Front Field View            |  Back Field View
 *Tree Status Summary*
 <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_status_layout1.PNG" width="400">
 
+### RMarkdown Demo
+<img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_variety_layout.gif" width="500">
+
 ## Tableau Dashboard
 ##### The purpose of the Tableau dashboard is to give my father a high-level view of his orchard in terms of numbers.  This dashboard is a static view of the current situation in the field in aggregate over all years he has planted chestnuts.  As he adds more data into the database, the numbers will update and give him insights based on all-time data.
 
 ## Tableau Demo
-
 
 ### ***Beyer Chestnut Orchards Planning Dashboard***
 [Link to Tableau Public Visualization](https://public.tableau.com/profile/abrambeyer#!/vizhome/BeyerChestnutOrchardsPlanningDashboard/BeyerChestnutOrchardsMain)  
