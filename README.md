@@ -27,8 +27,14 @@
 
 ## RMarkdown Report Examples
 
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+<img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_variety_layout1.PNG" width="500">  |  <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_variety_layout2.PNG" width="500">
+
+
 
 ## Tableau Dashboard
+##### The purpose of the Tableau dashboard is to give my father a high-level view of his orchard in terms of numbers.  This dashboard is a static view of the current situation in the field in aggregate over all years he has planted chestnuts.  As he adds more data into the database, the numbers will update and give him insights based on all-time data.
 
 ## Tableau Demo
 
