@@ -31,7 +31,7 @@
 
 ##### *The great thing* about these RMarkdown reports is he can quickly regenerate the numbers and print out the sheet so he can walk the field with a map.
 
-##### **NOTE ABOUT THE COLOR CHOICES I MADE**:  I understand some people may not like using red, green color-coding.  However, my father has physically painted every tree in his orchard to mark the tree variety.  The colors on these reports represent the actual line of paint on the tree trunk.  Colossal = red, for example.  When you're standing next to the tree, there is a line of red around its trunk so he can quickly remember what kind of chestnut it is.  I believe these colors were determined initially by what he had available at his local hardward store.
+##### **NOTE ABOUT THE COLOR CHOICES I MADE**:  I understand some people may not like using red, green color-coding for neutral variables such as tree variety.  However, my father has physically painted every tree in his orchard to mark the tree variety.  The colors on these reports represent the actual line of paint on the tree trunk.  Colossal = red, for example.  When you're standing next to the tree, there is a line of red around its trunk so he can quickly remember what kind of chestnut it is.  I believe these colors were determined initially by what he had available at his local hardward store.
 
 Front Field View            |  Back Field View
 :-------------------------:|:-------------------------:
