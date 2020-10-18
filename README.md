@@ -25,6 +25,10 @@
 ## Access Database ER Diagram 
 <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/er_diagram.PNG" width="500">
 
+## R Exploratory Data Analysis 
+##### In this project are several adhoc R scripts use to help my father answer basic questions about his orchard.  Examples are shown below.
+
+
 ## RMarkdown Report Examples
 
 ##### I created a series of RMarkdown reports for my father so he can quickly regenerate current-situation views of his orchard in terms of tree variety, tree age, specially-noted trees, dead tree locations, etc.
