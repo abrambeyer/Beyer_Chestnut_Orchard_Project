@@ -23,7 +23,7 @@
  
 
 ## Access Database ER Diagram 
-
+<img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/er_diagram.PNG" width="500">
 
 ## RMarkdown Report Examples
 
@@ -36,5 +36,5 @@
 ### ***Beyer Chestnut Orchards Planning Dashboard***
 [Link to Tableau Public Visualization](https://public.tableau.com/profile/abrambeyer#!/vizhome/BeyerChestnutOrchardsPlanningDashboard/BeyerChestnutOrchardsMain)  
 
-<img src="https://github.com/abrambeyer/Tableau_Projects/blob/main/h1b_visa_project_2015_2019/2015_2019_demo_gif.gif" width="500">
+<img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_chestnut_orchards_planning_dashboard_gif.gif" width="500">
   
