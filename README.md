@@ -27,7 +27,7 @@
 
 ## R Exploratory Data Analysis 
 ##### In this project are several adhoc R scripts use to help my father answer basic questions about his orchard.  Examples are shown below.
-
+<img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/2013%20Tree%20Variety%20Counts.png" width="400">  |  <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/2014%20Orchard%20Tree%20Counts%20v2.png" width="400">  
 
 ## RMarkdown Report Examples
 
