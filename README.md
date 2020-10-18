@@ -29,6 +29,8 @@
 
 ##### I created a series of RMarkdown reports for my father so he can quickly regenerate current-situation views of his orchard in terms of tree variety, tree age, specially-noted trees, dead tree locations, etc.
 
+##### *The great thing* about these RMarkdown reports is he can quickly regenerate the numbers and print out the sheet so he can walk the field with a map.
+
 ##### **NOTE ABOUT THE COLOR CHOICES I MADE**:  I understand some people may not like using red, green color-coding.  However, my father has physically painted every tree in his orchard to mark the tree variety.  The colors on these reports represent the actual line of paint on the tree trunk.  Colossal = red, for example.  When you're standing next to the tree, there is a line of red around its trunk so he can quickly remember what kind of chestnut it is.  I believe these colors were determined initially by what he had available at his local hardward store.
 
 Front Field View            |  Back Field View
@@ -37,8 +39,14 @@ Front Field View            |  Back Field View
 <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_variety_layout1.PNG" width="400">  |  <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_variety_layout2.PNG" width="400">  
 *Tree Age*
 <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_age_layout1.PNG" width="400">  |  <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_age_layout2.PNG" width="400">
-
-
+*Tree Turnover*
+<img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_location_turnover_layout1.PNG" width="400">  |  <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_location_turnover_layout2.PNG" width="400">
+*Tree Notes*
+<img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_notes_layout1.PNG" width="400">  |  <img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_notes_layout2.PNG" width="400">
+*Dead Tree Locations*
+<img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_dead_tree_locator.PNG" width="400">
+*Tree Status Summary*
+<img src="https://github.com/abrambeyer/Beyer_Chestnut_Orchard_Project/blob/main/beyer_orchard_tree_status_layout1.PNG" width="400">
 
 ## Tableau Dashboard
 ##### The purpose of the Tableau dashboard is to give my father a high-level view of his orchard in terms of numbers.  This dashboard is a static view of the current situation in the field in aggregate over all years he has planted chestnuts.  As he adds more data into the database, the numbers will update and give him insights based on all-time data.
