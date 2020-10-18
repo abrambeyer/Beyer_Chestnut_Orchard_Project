@@ -1,0 +1,193 @@
+---
+title: "Beyer Orchard Layout (TREE VARIETY)"
+output:
+  html_document:
+    df_print: paged
+    code_folding: "hide"
+    theme: readable
+---
+
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ggalt)
+library(ggthemes)
+library(RODBC)
+library(RColorBrewer)
+#########################################################################
+
+# Connect to the database
+
+#odbcDataSources()
+connect <- odbcDriverConnect("Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=D:/Users/Dr Roger Beyer/Desktop/CHESTNUTS/access_database/BeyerFarm.accdb")
+
+
+treedata <- sqlQuery(connect, "select *
+                     from 
+                     Tree")
+
+treevar <- sqlQuery(connect, "select * from TreeVariety")
+
+treelocationdata <- sqlQuery(connect, "select * from TreeLocation")
+treedata_joined <- inner_join(treedata, treelocationdata, by = "TreeLocationID")
+treedata_joined_var <- inner_join(treedata_joined,treevar, by="TreeVarietyID")
+odbcClose(connect)
+
+
+#########################################################################
+
+# find all trees in the field now
+
+
+# find all trees in the field now
+
+# Step 1:  select only necessary columns
+trees_final <- treedata_joined_var %>%
+  select(TreeLocationID, TreeID,Column, Row,TreeDeath, TreeDeathDate, TreePlantDate,TreeVarietyName,Pollinator,Transplant)
+  
+
+#n_distinct(trees_final$TreeID)
+#4618 distinct trees in the database
+
+
+#n_distinct(trees_final$TreeLocationID)
+#3449 distinct tree locations
+
+# Step 2: Reduce the dataframe down to only the most recent tree in each location.
+trees_final2 <- trees_final %>% 
+  group_by(TreeLocationID) %>% 
+  filter(TreePlantDate == max(TreePlantDate) | Transplant == 1)
+
+
+# Step 3:  Isolate locations which have duplicates.  This will happen if a tree was planted
+#          then died and was replaced all in the same year.
+duplicate_trees <- trees_final2 %>%
+  group_by(TreeLocationID) %>%
+  summarise(count = n_distinct(TreeID)) %>%
+  arrange(desc(count)) %>%
+  filter(count > 1) 
+
+
+
+# filter the dataset to get the correct IDs of the DEAD duplicate locations
+dead_duplicate_trees <- inner_join(duplicate_trees,trees_final2, by="TreeLocationID") %>%
+  filter(TreeDeath == 1)
+
+# Step 4:  Anti join to filter out DEAD duplicates
+trees_final3 <- anti_join(trees_final2, dead_duplicate_trees, by='TreeID')
+
+
+#########################################################################
+
+
+
+trees_final3$Column <- factor(trees_final3$Column, levels = c("A","B","C","D","E","F",
+                         "G","H","I","J","K","L",
+                         "M","N","O","P","Q","R","S",
+                         "T","U","V","W","X","Y","Z","AA",
+                         "BB","CC","DD","EE","FF","GG","HH","II","JJ","KK","LL","MM","NN","OO","PP","ZZZ"))
+```
+
+<br>
+
+```{r message=FALSE,warning=FALSE, fig.align="center", fig.width=18, fig.height=24}
+
+columnlabs1 <- levels(trees_final3$Column)
+columnlabs2 <- c("A","B","C","D","E","F",
+                         "G","H","I","J","K","L",
+                         "M","N","O","P","Q","R","S",
+                         "T","U","V","W","X","Y","Z","AA",
+                         "BB","CC","DD","EE","FF","GG","HH","II","JJ","KK","LL","MM","NN","OO","PP","ZZZ")
+
+
+ggplot(filter(trees_final3, Row > 58), aes(as.numeric(Column), Row)) + geom_tile(aes(fill = TreeVarietyName),colour = "white",size=2.2) + 
+geom_point(data=filter(trees_final3, TreeDeath == 1 & Row > 58), mapping=aes(x=as.numeric(Column), y=Row), shape=4, size=5,alpha=1,stroke=2.5) +
+  scale_fill_manual(values=c("purple",#"#542788",
+                             #"#d73027",
+                             "red",
+                             #"#8c510a",
+                             #"#fee090",
+                             "yellow",
+                             #"#f46d43",
+                             "orange",
+                             "#4393c3",#"#2166ac",
+                             #"#1b7837",
+                             "green",
+                             "#f1b6da")) +
+  #scale_fill_discrete() + 
+  #scale_fill_brewer(palette = "Set1",type="div") + 
+  theme_minimal()  +
+  scale_x_continuous(breaks = 1:length(columnlabs1),
+                     labels = columnlabs1,
+                     sec.axis = sec_axis(~.,
+                                         breaks = 1:length(columnlabs2),
+                                         labels = columnlabs2)) + 
+  scale_y_continuous(sec.axis = dup_axis(),
+                                  breaks = round(seq(0, max(trees_final3$Row), by = 5),1),
+                                  minor_break = seq(0,max(trees_final3$Row),5)) + 
+  theme(legend.position="top") +
+  theme(axis.text.x = element_text(size =13),
+        axis.text.y = element_text(size=22),
+        legend.text = element_text(colour="black", size=22),
+        legend.title = element_text(size=22),
+        axis.title.x=element_text(size=27),
+        axis.title.y=element_text(size=27),
+        axis.title.y.right = element_blank(),
+        panel.grid.minor = element_line(colour="black", size=0.5),
+        panel.grid.major = element_line(colour="black", size=0.5)) +
+  labs(fill = "Tree Variety",x="ROAD",y="RUNWAY")
+
+```
+
+
+<br>
+
+```{r message=FALSE,warning=FALSE, fig.align="center", fig.width=18, fig.height=24}
+
+columnlabs1 <- levels(trees_final3$Column)
+columnlabs2 <- c("A","B","C","D","E","F",
+                         "G","H","I","J","K","L",
+                         "M","N","O","P","Q","R","S",
+                         "T","U","V","W","X","Y","Z","AA",
+                         "BB","CC","DD","EE","FF","GG","HH","II","JJ","KK","LL","MM","NN","OO","PP","ZZZ")
+
+
+ggplot(filter(trees_final3, Row <= 58), aes(as.numeric(Column), Row)) + geom_tile(aes(fill = TreeVarietyName),colour = "white",size=2.2,stroke=1) + 
+geom_point(data=filter(trees_final3, TreeDeath == 1 & Row <= 58), mapping=aes(x=as.numeric(Column), y=Row), shape=4, size=5,alpha=1,stroke=2.5) +
+  #scale_fill_discrete() + 
+  #scale_fill_brewer(palette = "Set1",type="div") + 
+  scale_fill_manual(values=c("purple",#"#542788",
+                             #"#d73027",
+                             "red",
+                             "#8c510a",
+                             #"#fee090",
+                             "yellow",
+                             #"#f46d43",
+                             "orange",
+                             "#4393c3",
+                             #"#2166ac",
+                             #"#1b7837",
+                             "green",
+                             "#f1b6da")) +
+  theme_minimal()  +
+  scale_x_continuous(breaks = 1:length(columnlabs1),
+                     labels = columnlabs1,
+                     sec.axis = sec_axis(~.,
+                                         breaks = 1:length(columnlabs2),
+                                         labels = columnlabs2)) + 
+  scale_y_continuous(sec.axis = dup_axis(),
+                                  breaks = round(seq(0, max(trees_final3$Row), by = 5),1),
+                                  minor_break = seq(0,max(trees_final3$Row),5)) + 
+  theme(legend.position="top") +
+  theme(axis.text.x = element_text(size =13),
+        axis.text.y = element_text(size=22),
+        legend.text = element_text(colour="black", size=22),
+        legend.title = element_text(size=22),
+        axis.title.x=element_text(size=27),
+        axis.title.y=element_text(size=27),
+        axis.title.y.right = element_blank(),
+        panel.grid.minor = element_line(colour="black", size=0.5),
+        panel.grid.major = element_line(colour="black", size=0.5)) +
+  labs(fill = "Tree Variety",x="ROAD",y="RUNWAY")
+
+```
